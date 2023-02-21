@@ -11,3 +11,12 @@ body {
     border: 1px solid black;
     width: 300px;
 }
+
+#logged-hours-div {
+    position: relative;
+    border: 1px solid pink;
+    width: 50%;
+    height: 50%;
+    right: 20%;
+    top: 10%;
+}

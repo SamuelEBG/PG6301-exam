@@ -1,8 +1,10 @@
 
 export function ShowLoggedHours(props){
+
     return (
-        <div>
-            <h1>Employee page with activities</h1>
+        <div id="logged-hours-div">
+            <h1>Logged hours</h1>
+            <div></div>
         </div>
     );
 }
