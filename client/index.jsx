@@ -1,6 +1,7 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import * as ReactDOM from "react-dom";
 import { FrontPage } from "./pages/frontpage.jsx";
+import { Login } from "./pages/login.jsx";
 
 /*
     <Route path={"/register"} element={<NewUser />} />

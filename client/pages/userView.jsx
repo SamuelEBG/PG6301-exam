@@ -1,6 +1,7 @@
 import { LogOut } from "../components/logout.jsx";
 import { ErrorView } from "../components/error.jsx";
-
+import { EmployeePage } from "./employeePage.jsx";
+import { ManagerPage } from "./managerPage.jsx";
 
 export function UserView(props) {
     /*
@@ -14,17 +15,20 @@ export function UserView(props) {
         });
         reload();
     });
+
+    errors: {<ErrorView error={props.error} />}
     */
+    console.log(props.user.department);
+    console.log(props.user)
     return (
         <div>
-            Welcome, {props.fullName}
-            {<ErrorView error={props.error} />}
+            Welcome, {props.user.fullName}
             <div>
                 <LogOut reload={props.reload} />
             </div>
             <div>
-                {admin !== "true" && <GetMeals />}
-                {admin === "true" && <AddNewMeal />}
+                {props.user.department != "manager" && <EmployeePage />}
+                {props.user.department == "manager" && <ManagerPage />}
             </div>
         </div>
     );

@@ -3,7 +3,6 @@ import {useNavigate} from "react-router-dom";
 import {ErrorView} from "../components/error.jsx";
 import {Usercontext} from "../lib/userContext.jsx";
 
-
 export function Login() {
     const navigate = useNavigate();
     /*
