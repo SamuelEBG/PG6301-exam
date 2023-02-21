@@ -7,6 +7,9 @@ export const Usercontext = React.createContext({
         return await postJSON("/api/login/", user);
     },
     async createUser(user) {
-        return await postJSON("/api/login/new", user);
+        return await postJSON("/api/admin/new", user);
+    },
+    async getUsers() {
+        return await fetchJSON("/api/admin/");
     },
 });

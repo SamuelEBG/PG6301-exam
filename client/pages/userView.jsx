@@ -4,6 +4,7 @@ import {ListActivities} from "./listActivities";
 import {ShowLoggedHours} from "./showLoggedHours";
 import {LogHours} from "./logHours.jsx";
 import {useNavigate} from "react-router-dom";
+import {ManagerDashboard} from "./managerPage.jsx";
 
 export function UserView(props) {
     const navigate = useNavigate();
@@ -30,10 +31,12 @@ export function UserView(props) {
             <div>
                 {props.user.department != "manager" && <ListActivities user={props.user}/>}
                 {props.user.department != "manager" && <ShowLoggedHours user={props.user}/>}
-                {props.user.department != "manager" && <button className={"button"} onClick={(e) => navigate("/loghours")}>
-                    Register work
+                {props.user.department != "manager" &&
+                    <button className={"button"} onClick={(e) => navigate("/loghours", { state: { user: props.user } })}>
+                        Register work
                     </button>}
                 {props.user.department == "manager" && <ListActivities user={props.user} />}
+                {props.user.department == "manager" && <ManagerDashboard user={props.user} />}
             </div>
         </div>
     );

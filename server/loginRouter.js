@@ -8,6 +8,11 @@ export function requestUser(mongoDb) {
                 .find()
                 .toArray();
             req.user = usersFromDb.find((u) => u.username === username);
+            req.department = usersFromDb.find((u) => {
+                if (u.username === username) {
+                    return u.department;
+                }
+            });
         }
         next();
     };
@@ -40,6 +45,7 @@ export function createLoginRouter(mongoDatabase) {
 
     login.delete("/", (req, res) => {
         res.clearCookie("username");
+        res.clearCookie("department");
         res.sendStatus(204);
     });
 

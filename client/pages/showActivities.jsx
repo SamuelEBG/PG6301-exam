@@ -1,7 +1,4 @@
-
-
 export function CreateActivitiesList(props){
-    console.log(props.activities);
     const department = props.user.department;
     let filteredActivities;
     switch(department){

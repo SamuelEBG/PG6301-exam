@@ -7,6 +7,8 @@ import { createLoginRouter, requestUser } from "./loginRouter.js";
 import { createNewUser } from "./newUser.js";
 import { activityRouter } from "./activityRouter.js";
 import { MongoClient } from "mongodb";
+import {logHoursRouter} from "./logHoursRouter.js";
+import {adminRouter} from "./adminRouter.js";
 
 dotenv.config();
 
@@ -24,7 +26,9 @@ mongoClient.connect().then( async () => {
     app.use("/api/login", createLoginRouter(mongoClient.db("timeregister")));
     app.use("/api/register", createNewUser(mongoClient.db("timeregister")));
     app.use("/api/activities", activityRouter(mongoClient.db("timeregister")));
-})
+    app.use("/api/loggedhours", logHoursRouter(mongoClient.db("timeregister")));
+    app.use("/api/admin", adminRouter(mongoClient.db("timeregister")));
+});
 
 app.use(express.static("../client/dist"));
 

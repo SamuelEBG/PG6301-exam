@@ -1,19 +1,40 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
+import {useLocation, useNavigate} from "react-router-dom";
+import { Hourscontext } from "../lib/hoursContext.jsx";
+import {ErrorView} from "../components/error.jsx";
 
 export function LogHoursForm(props){
+    const navigate = useNavigate();
+    const { addHours } = useContext(Hourscontext);
+    const [username, setUsername] = useState('');
     const [activity, setActivity] = useState('');
     const [date, setDate] = useState('');
     const [hours, setHours] = useState('');
-    const [notes, setNotes] = useState('');
     const [error, setError] = useState(undefined);
 
     const minHours = 1;
     const maxHours = 8;
+    const location = useLocation();
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        // Do something with the time entry data, such as send it to the server.
-        // You can access the values of the fields using the state variables.
+    useEffect(() => {
+        setUsername(location.state.user.username);
+    }, [location.state.user.username]);
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        const timesheet = {
+            user: username,
+            date: date,
+            hours: hours,
+            activity: activity
+        };
+        try {
+            await addHours(timesheet);
+
+            navigate("/");
+        } catch (e) {
+            setError(e);
+        }
     }
 
     function isTimeValid() {
@@ -26,6 +47,7 @@ export function LogHoursForm(props){
 
     return (
         <div>
+            {error && <ErrorView error={error} />}
             <form onSubmit={handleSubmit}>
                 <label>
                     Activity:
@@ -45,11 +67,6 @@ export function LogHoursForm(props){
                 <label>
                     Hours:
                     <input type="number" value={hours} onChange={event => setHours(event.target.value)} min={minHours} max={maxHours} required />
-                </label>
-                <br />
-                <label>
-                    Notes:
-                    <textarea value={notes} onChange={event => setNotes(event.target.value)} />
                 </label>
                 <br />
                 <button type="submit" disabled={!isTimeValid()}>Submit</button>

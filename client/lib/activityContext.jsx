@@ -6,7 +6,4 @@ export const Activitycontext = React.createContext({
     async listActivities() {
         return await fetchJSON("/api/activities");
     },
-    async createUser(user) {
-        return await postJSON("/api/login/new", user);
-    },
 });
