@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import * as path from "path";
 import { createLoginRouter, requestUser } from "./loginRouter.js";
 import { createNewUser } from "./newUser.js";
+import { activityRouter } from "./activityRouter.js";
 import { MongoClient } from "mongodb";
 
 dotenv.config();
@@ -22,6 +23,7 @@ mongoClient.connect().then( async () => {
     app.use(requestUser(mongoClient.db("timeregister")));
     app.use("/api/login", createLoginRouter(mongoClient.db("timeregister")));
     app.use("/api/register", createNewUser(mongoClient.db("timeregister")));
+    app.use("/api/activities", activityRouter(mongoClient.db("timeregister")));
 })
 
 app.use(express.static("../client/dist"));

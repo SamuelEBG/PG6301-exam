@@ -1,0 +1,13 @@
+body {
+    position: relative;
+}
+
+#activities {
+    border: 1px solid black;
+    width: 300px;
+}
+
+#activity-div {
+    border: 1px solid black;
+    width: 300px;
+}
