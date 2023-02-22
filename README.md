@@ -1,7 +1,10 @@
 # PG6301-exam
 
 PG6301 spring exam
-
+## create .env file with following data in server directory
+MONGODB_URL=mongodb+srv://adminuser:12345@cluster0.kxyivof.mongodb.net/test
+COOKIE_SECRET=123123123123
+PORT=3000
 ## azure
 https://pg6301examsegb.azurewebsites.net
 
