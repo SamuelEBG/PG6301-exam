@@ -2,6 +2,9 @@
 
 PG6301 spring exam
 
+## azure
+https://pg6301examsegb.azurewebsites.net
+
 ## Solution
 Time management tool for a climbing gym.
 Employees can login and register time spent on activities in the company.
