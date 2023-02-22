@@ -17,7 +17,7 @@ export function ManagerDashboard() {
     }
     console.log(data);
     return (
-        <div>
+        <div className="logged-hours-div">
             {data.map((user) => (
                 <ShowLoggedHours key={user._id} user={user} />
             ))}

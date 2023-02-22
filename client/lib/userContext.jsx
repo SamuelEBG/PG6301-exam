@@ -1,5 +1,5 @@
 import React from "react";
-import { fetchJSON, postJSON } from "./http.js";
+import {fetchJSON, postJSON, putJSON} from "./http.js";
 
 export const Usercontext = React.createContext({
 
@@ -11,5 +11,8 @@ export const Usercontext = React.createContext({
     },
     async getUsers() {
         return await fetchJSON("/api/admin/");
+    },
+    async updateUser(user) {
+        return await putJSON("/api/admin/", user);
     },
 });

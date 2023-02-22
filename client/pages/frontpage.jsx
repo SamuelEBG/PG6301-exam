@@ -1,7 +1,6 @@
 import { useLoader } from "../lib/useLoader.jsx";
 import { fetchJSON } from "../lib/http.js";
 import { UserView } from "./userView.jsx";
-import { Login } from "./login.jsx";
 import {LoginAction} from "./loginAction.jsx";
 
 export function FrontPage() {
@@ -16,7 +15,6 @@ export function FrontPage() {
     if (loading) {
         return <div>Loading...</div>;
     }
-    console.log(data);
     return (
         <div>
             <h1 id="login">TimeRegister</h1>

@@ -39,7 +39,8 @@ export function createLoginRouter(mongoDatabase) {
         if (!user) {
             return res.sendStatus(401);
         }
-        res.cookie("username", username, {signed: true});
+        res.cookie("username", user.username, {signed: true});
+        res.cookie("department", user.department, {signed: true});
         res.sendStatus(200);
     });
 

@@ -1,4 +1,5 @@
 import express from "express";
+import { ObjectID } from "mongodb";
 
 export function adminRouter(mongodb) {
     const admin = express.Router();
@@ -8,6 +9,7 @@ export function adminRouter(mongodb) {
         if (department != "manager") {
             return res.sendStatus(403);
         }
+        console.log(users)
         return res.json(users);
     });
 
@@ -19,21 +21,23 @@ export function adminRouter(mongodb) {
     })
 
     admin.put("/", async (req, res) => {
-        const users = await mongodb.collection("users").find().toArray();
-        const { department } = req.signedCookies;
-        if(department == "manager"){
-        const data = req.body;
-            users.forEach((u) => {
-                if (u.username === data.username) {
-                    u.fullName = data.fullName;
-                    u.username = data.name;
-                    u.department = data.department;
-                }
-            });
-            res.sendStatus(204);
-        } else {
-            res.sendStatus(401);
+        if (!req.user) {
+            return res.sendStatus(401);
         }
+        if (req.user.department !== "manager") {
+            return res.sendStatus(403);
+        }
+        console.log(req.body.username);
+        console.log(req.body.id);
+        const { id, fullName, username, password, department} = req.body;
+        const user = { fullName, username, password, department };
+
+        mongodb
+            .collection("users")
+            .updateOne({ _id: ObjectID(id) }, { $set: user })
+            .catch((err) => console.error(`update failed with error: ${err}`));
+        console.log("updated " + user.username);
+        return res.sendStatus(204);
     });
     return admin;
 }
