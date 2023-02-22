@@ -12,8 +12,9 @@ jobs:
         with:
           node-version: 16.x
       - name: install dependencies
-        run: npm ci
-      - run: npm run workflow
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test
         env:
           MONGODB_URL: ${{ secrets.MONGODB_URL }}
       - name: Collect coverage for client
