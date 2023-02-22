@@ -18,23 +18,23 @@ Managers cannot add or remove activites from different departments.
 ### Predefined Users
 * Managers:
 
-- manager for the gym:
+ manager for the gym:
 - username: managermagnus
 - password: 1fingerpullups
 
-- manager for the cafeteria:
+ manager for the cafeteria:
 - username: nancy
 - password: coffee
 
 Employees:
 
-gym department:
-username: derek
-password: ropesnharness
+ gym department:
+- username: derek
+- password: ropesnharness
 
 cafeteria:
-username: greg
-password: espresso
+- username: greg
+- password: espresso
 
 
 
