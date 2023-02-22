@@ -36,7 +36,11 @@ cafeteria:
 - username: greg
 - password: espresso
 
-
+## Endpoints for server and client
+* /api/login {POST, GET, DELETE}
+* /api/activities {POST, GET, DELETE}
+* /api/loggedhours {GET, GET:username, POST}
+* /api/admin {GET, POST, PUT}
 
 
 * [x] Some form of Login and access control
