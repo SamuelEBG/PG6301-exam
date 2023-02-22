@@ -16,15 +16,15 @@ I did not have enough time to implement managers adding and editing activities.
 Managers cannot add or remove activites from different departments.
 
 ### Predefined Users
-Managers:
+* Managers:
 
-manager for the gym:
-username: managermagnus
-password: 1fingerpullups
+- manager for the gym:
+- username: managermagnus
+- password: 1fingerpullups
 
-manager for the cafeteria:
-username: nancy
-password: coffee
+- manager for the cafeteria:
+- username: nancy
+- password: coffee
 
 Employees:
 
